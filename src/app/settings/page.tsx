@@ -67,7 +67,7 @@ export default function SettingsPage() {
   const profileId = getProfileId();
 
   return (
-    <div className="p-6 max-w-2xl mx-auto space-y-6">
+    <div className="p-4 md:p-6 max-w-2xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Settings</h1>
         <p className="text-slate-400 text-sm mt-1">Manage data, cache, and connection</p>

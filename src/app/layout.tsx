@@ -18,12 +18,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-full bg-slate-900 text-slate-100 flex antialiased">
+      <body className="min-h-full bg-slate-900 text-slate-100 antialiased">
         <CurrencyProvider>
           <AuthProvider>
             <DataProvider>
-              <Sidebar />
-              <main className="flex-1 min-w-0 overflow-auto">{children}</main>
+              <div className="flex min-h-screen">
+                <Sidebar />
+                {/* pt-14 = mobile top bar height, pb-16 = mobile bottom nav height */}
+                <main className="flex-1 min-w-0 overflow-auto pt-14 md:pt-0 pb-16 md:pb-0">
+                  {children}
+                </main>
+              </div>
               <SyncErrorBanner />
             </DataProvider>
           </AuthProvider>

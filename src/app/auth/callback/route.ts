@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Supabase JS v2 with detectSessionInUrl:true handles the PKCE exchange
-// automatically in the browser. This route just cleans the URL and redirects.
+// Supabase PKCE flow: after Google auth, Supabase appends ?code=xxx here.
+// We MUST forward the code to a client-rendered page so detectSessionInUrl:true
+// can exchange it for a session. Stripping the code breaks the sign-in.
 export async function GET(request: NextRequest) {
-  const { searchParams, origin } = new URL(request.url);
-  const next = searchParams.get("next") ?? "/profile";
-  // Let the client pick up the code/token from URL params on next render
-  return NextResponse.redirect(`${origin}${next}`);
+  const url = new URL(request.url);
+  const code = url.searchParams.get("code");
+  const next = url.searchParams.get("next") ?? "/";
+
+  const redirectUrl = new URL(next, url.origin);
+  if (code) redirectUrl.searchParams.set("code", code);
+
+  return NextResponse.redirect(redirectUrl.toString());
 }

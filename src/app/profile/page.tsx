@@ -43,7 +43,7 @@ export default function ProfilePage() {
     });
 
     return (
-      <div className="p-6 max-w-2xl mx-auto space-y-6">
+      <div className="p-4 md:p-6 max-w-2xl mx-auto space-y-6">
         <div>
           <h1 className="text-2xl font-bold">Profile</h1>
           <p className="text-slate-400 text-sm mt-1">Your account details</p>
@@ -121,7 +121,7 @@ export default function ProfilePage() {
 
   // ── Guest / not logged in ──────────────────────────────────
   return (
-    <div className="p-6 max-w-2xl mx-auto space-y-6">
+    <div className="p-4 md:p-6 max-w-2xl mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-bold">Profile</h1>
         <p className="text-slate-400 text-sm mt-1">Sign in to sync your data across devices</p>

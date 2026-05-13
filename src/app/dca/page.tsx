@@ -220,7 +220,7 @@ export default function DCAPage() {
   const [adding, setAdding] = useState(false);
 
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
+    <div className="p-4 md:p-6 max-w-5xl mx-auto space-y-6">
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold">DCA Projections</h1>

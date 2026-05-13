@@ -374,7 +374,7 @@ export default function InvestmentsPage() {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
+    <div className="p-4 md:p-6 max-w-5xl mx-auto space-y-6">
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-bold">Investments</h1>
@@ -391,7 +391,7 @@ export default function InvestmentsPage() {
       </div>
 
       {investments.length > 0 && (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <Card className="text-center">
             <p className="text-xs text-slate-400 mb-1">Total Cost Basis</p>
             <p className="text-xl font-bold">{format(totalCostDisplay)}</p>

@@ -47,10 +47,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const signInWithGoogle = useCallback(async () => {
+    // NEXT_PUBLIC_SITE_URL must be set in Vercel env vars to your deployment URL
+    // (e.g. https://my-app.vercel.app). Without it Supabase falls back to its
+    // configured Site URL which may be localhost, causing the post-OAuth redirect
+    // to land on localhost instead of your deployed app.
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? window.location.origin;
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/profile`,
+        redirectTo: `${siteUrl}/auth/callback?next=/`,
         queryParams: { access_type: "offline", prompt: "consent" },
       },
     });
